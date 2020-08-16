@@ -1,0 +1,93 @@
+<html>
+
+    <head>
+        
+        <title>Reaction Timer</title>
+		
+		<style type="text/css">
+		#shape{
+		      width:200px;
+			  height:200px;
+			  background-color:red;
+			  display: none;
+			  position:relative;
+		}
+		</style>
+		
+    
+    </head>
+
+    <body>
+        
+        <h1>Test Your Reactions!</h1>
+        
+        <p>Click on the boxes and circles as quickly as you can!</p>
+        
+        <p ><strong>Your time: <span id="timeTaken"></span></strong></p>
+        
+        <div id="shape"></div>
+        
+        <script type="text/javascript">
+		  var bc = new Date().getTime();
+		   makeShapeAppear();
+               document.getElementById("shape").onclick=function(){
+			     var ac = new Date().getTime();
+			     document.getElementById("shape").style.display="none";
+			     var time=ac-bc;
+			     document.getElementById("timeTaken").innerHTML=time/1000+"second";
+				 setTimeout(makeShapeAppear, Math.random() * 4000);
+				
+			   }
+			   
+			     function getRandomColor() {
+                
+                var letters = '0123456789ABCDEF'.split('');
+    
+                var color = '#';
+    
+                for (var i = 0; i < 6; i++ ) {
+        
+                    color += letters[Math.floor(Math.random() * 16)];
+    
+                }
+    
+                return color;
+
+            }
+			   
+			  function makeShapeAppear(){
+			 var top = Math.random() * 400;
+                
+                var left = Math.random() * 400;
+                
+                var width = (Math.random() * 200) + 100;
+                
+                if (Math.random() > 0.5) {
+                    
+                    document.getElementById("shape").style.borderRadius = "50%";
+                    
+                } else {
+                    
+                    document.getElementById("shape").style.borderRadius = "0";
+                    
+                }
+                
+                document.getElementById("shape").style.backgroundColor =getRandomColor();
+                
+                document.getElementById("shape").style.width = width + "px";
+                
+                document.getElementById("shape").style.height = width + "px";
+                
+                document.getElementById("shape").style.top = top + "px";
+                
+                document.getElementById("shape").style.left = left + "px";
+    
+                document.getElementById("shape").style.display = "block";
+				bc = new Date().getTime();
+			   }
+			   
+        </script>
+        
+    </body>
+
+</html>
